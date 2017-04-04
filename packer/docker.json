@@ -1,0 +1,22 @@
+{
+    "variables": {
+      "secret_key": "{{env `SECRET_KEY`}}"
+    },
+
+    "builders": [
+        {
+            "type": "docker",
+            "image": "debian",
+            "commit": "true"
+        }
+    ],
+
+    "description": "Sample Packer template for Docker.",
+    
+    "provisioners": [
+        {
+            "type": "shell",
+            "script": "sample.sh"
+        }
+    ]    
+}
