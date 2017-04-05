@@ -25,6 +25,10 @@
         {
             "type": "shell",
             "script": "bootstrap.sh"
+        },
+        {
+            "type": "file",
+            "source": "../rocinante/build/rocinante.tar.gz"
         }
     ]
 }
