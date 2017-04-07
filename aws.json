@@ -23,14 +23,14 @@
     "description": "Packer example for ganymede.",
 
     "provisioners": [
-        {
-            "type": "shell",
-            "script": "bootstrap.sh"
-        },
-        {
+       {
             "type": "file",
             "source": "../rocinante/build/rocinante.tar.gz",
             "destination": "/home/ec2-user/rocinante.tar.gz"
+        },
+        {
+            "type": "shell",
+            "script": "bootstrap.sh"
         },
         {
             "type": "file",
@@ -46,6 +46,5 @@
             "type": "chef-client",
             "server_url": "https://localhost/loganov"
         }
-
     ]
 }
