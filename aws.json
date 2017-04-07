@@ -15,7 +15,7 @@
           "source_ami": "ami-5dd3743d",
           "instance_type": "t2.micro",
           "ami_name": "packer-example-ganymede-{{timestamp}}",
-	        "ssh_username": "ec2-user",
+          "ssh_username": "ec2-user",
           "user_data_file" : "user-data.txt"
         }
     ],
@@ -33,14 +33,14 @@
             "destination": "/home/ec2-user/rocinante.tar.gz"
         },
         {
-          "type": "file",
-          "source": "validation.pem",
-          "destination": "/etc/chef/validation.pem"
+            "type": "file",
+            "source": "validation.pem",
+            "destination": "/etc/chef/validation.pem"
         },
         {
-          "type": "file",
-          "source": "client.rb",
-          "destination": "/etc/chef/client.rb"
+            "type": "file",
+            "source": "client.rb",
+            "destination": "/etc/chef/client.rb"
         },
         {
             "type": "chef-client",
