@@ -14,8 +14,9 @@
           "region": "us-west-2",
           "source_ami": "ami-5dd3743d",
           "instance_type": "t2.micro",
-          "ssh_username": "ec2-user",
-          "ami_name": "packer-example-ganymede-{{timestamp}}"
+          "ami_name": "packer-example-ganymede-{{timestamp}}",
+	        "ssh_username": "ec2-user",
+          "user_data_file" : "user-data.txt"
         }
     ],
 
@@ -28,7 +29,23 @@
         },
         {
             "type": "file",
-            "source": "../rocinante/build/rocinante.tar.gz"
+            "source": "../rocinante/build/rocinante.tar.gz",
+            "destination": "/home/ec2-user/rocinante.tar.gz"
+        },
+        {
+          "type": "file",
+          "source": "validation.pem",
+          "destination": "/etc/chef/validation.pem"
+        },
+        {
+          "type": "file",
+          "source": "client.rb",
+          "destination": "/etc/chef/client.rb"
+        },
+        {
+            "type": "chef-client",
+            "server_url": "https://localhost/loganov"
         }
+
     ]
 }

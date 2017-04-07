@@ -26,7 +26,7 @@ Export AWS_ACCESS_KEY and AWS_SECRET_KEY.
 
 Add keys to aws_keys.sh
 
-`./aws_keys.sh`
+`source aws_keys.sh`
 
 ## Systems
 * web service
