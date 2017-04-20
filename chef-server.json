@@ -1,0 +1,31 @@
+{
+    "variables": {
+      "aws_access_key": "{{env `AWS_ACCESS_KEY`}}",
+      "aws_secret_key": "{{env `AWS_SECRET_KEY`}}",
+      "aws_region": "{{env `AWS_REGION`}}",
+      "aws_ami_id": "{{env `AWS_AMI_ID`}}"
+    },
+
+    "builders": [
+        {
+          "type": "amazon-ebs",
+          "access_key": "{{user `aws_access_key`}}",
+          "secret_key": "{{user `aws_secret_key`}}",
+          "region": "us-west-2",
+          "source_ami": "ami-5dd3743d",
+          "instance_type": "t2.medium",
+          "ami_name": "packer-chef-server-{{timestamp}}",
+          "ssh_username": "ec2-user",
+          "user_data_file" : "user-data.txt"
+        }
+    ],
+
+    "description": "Chef server for ganymede.",
+
+    "provisioners": [
+        {
+            "type": "shell",
+            "script": "chef-server-bootstrap.sh"
+        }
+    ]
+}
